@@ -5,7 +5,19 @@
 const Stack = require('../lib/Stack')
 
 function removeDuplicates(stack) {
-  // your code here
+  tempStack = new Stack();
+  const seen = new Set();
+  while (!stack.isEmpty()) {
+    const num = stack.pop();
+    if (!seen.has(num)) {
+      seen.add(num);
+      tempStack.push(num);
+    }
+  }
+
+  while (!tempStack.isEmpty()) {
+    stack.push(tempStack.pop());
+  }
 }
 
 // Create stack
